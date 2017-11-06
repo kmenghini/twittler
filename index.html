@@ -7,7 +7,9 @@
     <title>Twittler</title>
   </head>
   <body>
-    <h1>Twittler</h1>
+    <h1>
+      <a>Twittler</a>
+    </h1>  
 
     <button class="refresh">Refresh Tweets</button>
     <ul>
@@ -23,10 +25,9 @@
 
         function formatTweet(index){
           var tweet = streams.home[index];
-          var $tweet = $('<li><button class ="user">@' + tweet.user + '</button>: ' + tweet.message + '<p class="time">' + tweet.created_at + '</p></li>');
+          var $tweet = $('<li><button id="user-filter">@' + tweet.user + '</button>: ' + tweet.message + '<p class="time">' + tweet.created_at + '</p></li>');
+
           return $tweet;
-          //adds this text to the li 
-          //return $tweet.text('<button>@' + tweet.user + '</button>: ' + tweet.message + tweet.created_at);
         }
 
         //load tweets
@@ -48,6 +49,20 @@
             }
           }
         });
+
+        //add class to li for username
+        $('ul li').each(function(){
+          $(this).addClass($(this).find('#user-filter').text());      
+        });
+
+
+        //when user button is clicked, filter results
+        $('#user-filter').on('click', function(){
+          //event handler to (addClass? or remove that list item)
+          //loop through all tweets, if tweet.user !== buttom
+            //then remove from list
+
+        })
 
 
       });
