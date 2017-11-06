@@ -1,24 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <title>Twittler</title>
   </head>
   <body>
+    <h1>Twittler</h1>
+
+    <button>Refresh Tweets</button>
+    <ul></ul>
+
+
     <script>
 
       $(document).ready(function(){
-        var $body = $('body');
-        $body.html('');
+        var $ul = $('ul');
+        //$body.html('');
 
+        function formatTweet(index){
+          var tweet = streams.home[index];
+          var $tweet = $('<li></li>');
+          return $tweet.text('@' + tweet.user + ': ' + tweet.message);
+        }
+
+        //load tweets
         var index = streams.home.length - 1;
         while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
+          formatTweet(index).appendTo($ul);
           index -= 1;
         }
+
+        //refresh when button is clicked
+        $('button').on('click', function(){
+          if(streams.home.length > $('li').length) {
+            //add new tweets to top
+            var newTweetsEnd = streams.home.length - 1;
+            var newTweets = $('li').length;
+            while(newTweets <= newTweetsEnd) {
+              formatTweet(newTweets).prependTo($ul);
+              newTweets += 1;
+            }
+          }
+        });
+
 
       });
 
