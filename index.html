@@ -9,8 +9,10 @@
   <body>
     <h1>Twittler</h1>
 
-    <button>Refresh Tweets</button>
-    <ul></ul>
+    <button class="refresh">Refresh Tweets</button>
+    <ul>
+      
+    </ul>
 
 
     <script>
@@ -21,8 +23,10 @@
 
         function formatTweet(index){
           var tweet = streams.home[index];
-          var $tweet = $('<li></li>');
-          return $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          var $tweet = $('<li><button class ="user">@' + tweet.user + '</button>: ' + tweet.message + '<p class="time">' + tweet.created_at + '</p></li>');
+          return $tweet;
+          //adds this text to the li 
+          //return $tweet.text('<button>@' + tweet.user + '</button>: ' + tweet.message + tweet.created_at);
         }
 
         //load tweets
@@ -33,7 +37,7 @@
         }
 
         //refresh when button is clicked
-        $('button').on('click', function(){
+        $('.refresh').on('click', function(){
           if(streams.home.length > $('li').length) {
             //add new tweets to top
             var newTweetsEnd = streams.home.length - 1;
