@@ -74,7 +74,7 @@ button {
 	padding: 8px 16px;
 	vertical-align: middle;
 	font-weight: 600;
-
+	cursor: pointer;
 }
 
 h2 {
@@ -83,21 +83,25 @@ h2 {
 	border-bottom: 6px solid #ccc;
 }
 
-ul {
-
-}
-
 li {
-
+	font-size: 14px;
+	line-height: 16px;
+	padding: 5px;
+	background-color: white;
+	margin: 5px;
 }
 
-p #time {
-
+p.time {
+	color: #13444C;
+	font-size: 10px;
+	line-height: 12px;
+	font-style: italic;
+	margin-left: 20px;
 }
 
-
-
-button #user-filter {
-
+button#user-filter {
+	color: #288D9D;
+	padding: 0;
+	font-size:14px;
+	line-height: 16px;
 }
-
