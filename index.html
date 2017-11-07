@@ -9,35 +9,29 @@
   <body>
     <h1>
       <a>Twittler</a>
-    </h1>  
-
+    </h1>
     <button class="refresh">Refresh Tweets</button>
-    <ul>
-      
-    </ul>
-
+    <ul></ul>
 
     <script>
 
       $(document).ready(function(){
         var $ul = $('ul');
-        //$body.html('');
 
         function formatTweet(index){
           var tweet = streams.home[index];
           var $tweet = $('<li><button id="user-filter">@' + tweet.user + '</button>: ' + tweet.message + '<p class="time">' + tweet.created_at + '</p></li>');
-
           return $tweet;
         }
 
-        //load tweets
+        //load initial tweets
         var index = streams.home.length - 1;
         while(index >= 0){
           formatTweet(index).appendTo($ul);
           index -= 1;
         }
 
-        //refresh when button is clicked
+        //pull new tweets when 'Refresh Tweets' button is clicked
         $('.refresh').on('click', function(){
           if(streams.home.length > $('li').length) {
             //add new tweets to top
@@ -50,29 +44,24 @@
           }
         });
 
-        // 
-        // $('ul li').each(function(){
-        //   $(this).addClass($(this).find('#user-filter').text().slice(1));      
-        // });
-
-
         //when user button is clicked, filter results
         $('ul').on('click', '#user-filter', function(){
 
+          //store clicked button name
           var filterName = $(this).text().slice(1);
 
-          //add class to each li for username
+          //add class to every li for username
           $('ul li').each(function(){
             $(this).addClass($(this).find('#user-filter').text().slice(1));      
           });
 
+          //remove any previous .user-selected instances
+          $('.user-selected').removeClass('user-selected');
 
+          //show only li with same username class
           $('.' + filterName).addClass('user-selected');
-          //show only li with .user-selected 
           $('ul li').not('.user-selected').hide();
         });
-
-
 
       });
 
