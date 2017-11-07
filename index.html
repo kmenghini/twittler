@@ -50,21 +50,26 @@
           }
         });
 
-        //add class to li for username
-        $('ul li').each(function(){
-          $(this).addClass($(this).find('#user-filter').text().slice(1));      
-        });
+        // 
+        // $('ul li').each(function(){
+        //   $(this).addClass($(this).find('#user-filter').text().slice(1));      
+        // });
 
 
         //when user button is clicked, filter results
         $('ul #user-filter').on('click', function(){
+
           var filterName = $(this).text().slice(1);
-          //$(this).addClass('filter');
-          //event handler to (addClass? or remove that list item)
-          //loop through all tweets, if tweet.user !== buttom
-          $('.' + filterName).toggleClass('user-selected');
+
+          //add class to each li for username
+          $('ul li').each(function(){
+            $(this).addClass($(this).find('#user-filter').text().slice(1));      
+          });
+
+
+          $('.' + filterName).addClass('user-selected');
           //show only li with .user-selected 
-          
+          $('ul li').not('.user-selected').hide();
         });
 
 
