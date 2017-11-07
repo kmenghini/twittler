@@ -51,16 +51,36 @@ table {
 *************************************/
 
 body {
-
-
+	font: 14px "Open Sans", sans-serif;
+	background: #E9ECEC;
+	color: black;
 }
 
 h1 {
+	margin: 20px 20px 0 15px;
+}
 
+a {
+	font-family: "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 800;
+	font-size: 40px;
+	color: #103C43;
 }
 
 button {
+	background-color: white;
+	border: none;
+	display: inline-block;
+	padding: 8px 16px;
+	vertical-align: middle;
+	font-weight: 600;
 
+}
+
+h2 {
+	padding: 16px;
+	margin: 16px 0;
+	border-bottom: 6px solid #ccc;
 }
 
 ul {
@@ -75,13 +95,7 @@ p #time {
 
 }
 
-button #refresh {
 
-}
-
-button #all{
-	
-}
 
 button #user-filter {
 
