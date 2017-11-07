@@ -10,7 +10,7 @@
     <h1>
       <a>Twittler</a>
     </h1>
-    <button class="refresh">Refresh Tweets</button>
+    <button id="refresh">Refresh Tweets</button>
     <ul></ul>
 
     <script>
@@ -32,7 +32,7 @@
         }
 
         //pull new tweets when 'Refresh Tweets' button is clicked
-        $('.refresh').on('click', function(){
+        $('#refresh').on('click', function(){
           if(streams.home.length > $('li').length) {
             //add new tweets to top
             var newTweetsEnd = streams.home.length - 1;
@@ -55,13 +55,17 @@
             $(this).addClass($(this).find('#user-filter').text().slice(1));      
           });
 
+          
           //remove any previous .user-selected instances
           $('.user-selected').removeClass('user-selected');
-
+          $('ul li').show();
+          
           //show only li with same username class
           $('.' + filterName).addClass('user-selected');
           $('ul li').not('.user-selected').hide();
+          
         });
+
 
       });
 
