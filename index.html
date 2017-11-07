@@ -10,7 +10,7 @@
     <h1>
       <a>Twittler</a>
     </h1>
-    <button id="refresh">Refresh Tweets</button>
+    <button id="refresh">Load New Tweets</button><button id="all">All Users</button>
     <ul></ul>
 
     <script>
@@ -63,8 +63,13 @@
           //show only li with same username class
           $('.' + filterName).addClass('user-selected');
           $('ul li').not('.user-selected').hide();
-          
+
         });
+
+        //when 'all' button is clicked, show all users again
+        $('#all').on('click', function(){
+          $('ul li').show();
+        })
 
 
       });
